@@ -1,16 +1,22 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { IUser } from '../../../app/constants/interfaces';
+import { logOut, setCredentias } from './authReducer';
 
-const initialState: any = {
-	userId: '',
-	password: '',
-	mail: '',
+const initialState: IUser = {
+	username: null,
+	password: null,
 	permissions: [],
+	autenticate: false,
 };
 
 export const authSlice = createSlice({
-	name: 'tasks',
+	name: 'auth',
 	initialState,
-	reducers: {},
+	reducers: {
+		login: setCredentias,
+		logout: logOut,
+	},
 });
 
+export const { login, logout } = authSlice.actions;
 export const authReducer = authSlice.reducer;

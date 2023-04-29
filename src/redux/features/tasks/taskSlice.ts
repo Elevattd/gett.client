@@ -1,11 +1,6 @@
-import { ITask } from '../../../interface/Task';
 import { createSlice } from '@reduxjs/toolkit';
 import { createTask, updateTask, deleteTask } from './taskReducer';
-
-export interface ITaskSliceState {
-	value: ITask[];
-	status: any;
-}
+import { ITaskSliceState } from '../../../app/constants/interfaces';
 
 const initialState: ITaskSliceState = {
 	value: [

@@ -1,5 +1,5 @@
 import './index.css';
-import App from './App';
+import { App } from './App';
 import React from 'react';
 import reportWebVitals from './reportWebVitals';
 import { store } from './redux/store/store';

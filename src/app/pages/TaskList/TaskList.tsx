@@ -2,11 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { useTaskList } from './useTaskList';
 
-const TaskList = () => {
+const TaskList: React.FC<{}> = () => {
 	const {
 		tasks: { value: tasks },
 	} = useSelector((state: any) => state);
-	console.log('🚀 👍 ~ TaskList ~ tasks:', tasks);
 	const [deleteTask] = useTaskList();
 
 	return (

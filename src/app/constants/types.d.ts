@@ -5,3 +5,8 @@ export type Action = {
 	payload: any;
 	type: string;
 };
+
+export type LoginType = {
+	username: string;
+	password: string;
+};
