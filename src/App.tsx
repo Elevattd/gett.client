@@ -10,9 +10,7 @@ import TaskForm from './app/views/TaskForm/TaskForm';
 function App() {
 	//cambiarlo por el estado global ....
 	const [autenticate, setAutenticate] = useState(true);
-	const dispatch: AppDispatch = useDispatch();
-	const taskState = useSelector((state: any) => state.tasks);
-	console.log('🚀 👍 ~ App ~ taskState:', taskState);
+
 	return (
 		<div className='App'>
 			<BrowserRouter>

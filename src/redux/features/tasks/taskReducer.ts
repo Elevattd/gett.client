@@ -1,25 +1,24 @@
+import { ITask } from '../../../interface/Task';
+import { Action } from '../../../app/global/types';
+import { ITaskSliceState } from './taskSlice';
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 
-type State = any;
+export const createTask: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (state: ITaskSliceState, action: Action) => {
+	const task: ITask = action?.payload;
+	state.value.push(task);
+};
+export const updateTask: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (state: ITaskSliceState, action: Action) => {
+	const { id, title, completed }: ITask = action?.payload;
+	const taskFound: ITask | undefined = state.value?.find((task: ITask) => task.id === id);
+	if (taskFound) {
+		taskFound.title = title;
+		taskFound.completed = completed;
+	}
+};
 
-type Action = {
-	payload: {};
-	type: string;
-};
-export const createTask: CaseReducer<State, PayloadAction<{}>> = (state: any, action: Action) => {
-	state.value.push(action?.payload);
-};
-export const updateTask: CaseReducer<State, PayloadAction<{}>> = (state, action: Action) => {
-	state.push(action?.payload);
-};
-
-export const deleteTask: CaseReducer<State, PayloadAction<{}>> = (state, action: Action) => {
-	const tasks: [] = state.value;
-	const taskFound = tasks?.find((task: any) => {
-		return task.id === action.payload;
-	});
+export const deleteTask: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (state: ITaskSliceState, action: Action) => {
+	const taskFound: ITask | undefined = state.value?.find((task: ITask) => task.id === action.payload);
 	if (taskFound) {
 		state.value.splice(state.value.indexOf(taskFound), 1);
 	}
-	console.log('🚀 👍 ~ taskFound ~ taskFound:', taskFound);
 };

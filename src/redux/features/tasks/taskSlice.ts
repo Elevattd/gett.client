@@ -1,7 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createTask, updateTask, deleteTask } from './taskReducer';
+import { ITask } from '../../../interface/Task';
 
-const initialState: any = {
+export interface ITaskSliceState {
+	value: ITask[];
+	status: any;
+}
+
+const initialState: ITaskSliceState = {
 	value: [
 		{ userId: 1, id: 1, title: 'delectus aut autem', completed: false },
 		{
