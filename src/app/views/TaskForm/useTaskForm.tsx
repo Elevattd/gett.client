@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../global/types';
+import { AppDispatch, RootState } from '../../constants/types';
 import { postTask } from '../../../redux/features/tasks/taskSlice';
 
 const useTaskForm = () => {

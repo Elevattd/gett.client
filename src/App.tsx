@@ -1,6 +1,5 @@
 import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from './app/global/types';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Login from './app/pages/Login/Login';
 import Home from './app/pages/Home/Home';

@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { AppDispatch } from '../../global/types';
+import { AppDispatch } from '../../constants/types';
 import { delTask } from '../../../redux/features/tasks/taskSlice';
 
 export const useTaskList = () => {

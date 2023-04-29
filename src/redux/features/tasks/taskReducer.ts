@@ -1,5 +1,5 @@
 import { ITask } from '../../../interface/Task';
-import { Action } from '../../../app/global/types';
+import { Action } from '../../../app/constants/types';
 import { ITaskSliceState } from './taskSlice';
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
 
