@@ -1,8 +1,8 @@
 import React from 'react';
-import TaskList from '../../views/TaskList/TaskList';
-import TaskForm from '../../views/TaskForm/TaskForm';
+import TaskList from '../TaskList/TaskList';
+import TaskForm from '../TaskForm/TaskForm';
 
-const Home = () => {
+const Home: React.FC<{}> = () => {
 	return (
 		<div>
 			<TaskForm />
