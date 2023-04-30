@@ -8,6 +8,7 @@ import { login } from './redux/features/auth/authSlice';
 import { RouterLayout } from './app/components/views/Layout/RouterLayout';
 import Home from './app/components/pages/Home/Home';
 import Login from './app/components/pages/Login/Login';
+import { NotificationProvider } from './config/context/Notification.context';
 
 export const App: React.FC<{}> = () => {
 	const dispatch: AppDispatch = useDispatch();
@@ -25,13 +26,15 @@ export const App: React.FC<{}> = () => {
 
 	return (
 		<div className='App'>
-			<BrowserRouter>
-				<Routes>
-					<Route path='/' element={<RouterLayout />}>
-						<Route path='/' element={autenticate ? <Home /> : <Login />} />
-					</Route>
-				</Routes>
-			</BrowserRouter>
+			<NotificationProvider>
+				<BrowserRouter>
+					<Routes>
+						<Route path='/' element={<RouterLayout />}>
+							<Route path='/' element={autenticate ? <Home /> : <Login />} />
+						</Route>
+					</Routes>
+				</BrowserRouter>
+			</NotificationProvider>
 		</div>
 	);
 };
