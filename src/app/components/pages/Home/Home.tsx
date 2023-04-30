@@ -1,13 +1,14 @@
 import React from 'react';
 import TaskList from '../TaskList/TaskList';
 import TaskForm from '../TaskForm/TaskForm';
+import { Container } from '@mui/material';
 
 const Home: React.FC<{}> = () => {
 	return (
-		<div>
-			<TaskForm />
+		<Container maxWidth='xl' sx={{ mt: 15 }}>
+			{/* <TaskForm /> */}
 			<TaskList />
-		</div>
+		</Container>
 	);
 };
 

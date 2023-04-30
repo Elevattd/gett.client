@@ -1,6 +1,6 @@
 import { Action } from '../../../app/constants/types';
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
-import { ITask, ITaskSliceState } from '../../../app/constants/interfaces';
+import { ITask, ITaskSliceState } from '../../../app/constants/interfaces.interfaces';
 
 export const createTask: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (state: ITaskSliceState, action: Action) => {
 	const task: ITask = action?.payload;

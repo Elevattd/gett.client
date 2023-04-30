@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { IUser } from '../../../app/constants/interfaces';
+import { IUser } from '../../../app/constants/interfaces.interfaces';
 import { logOut, setCredentias } from './authReducer';
 
 const initialState: IUser = {

@@ -1,4 +1,4 @@
-import { IUser } from '../constants/interfaces';
+import { IUser } from '../constants/interfaces.interfaces';
 import { users } from '../constants/mockupUsers';
 import { LoginType } from '../constants/types';
 

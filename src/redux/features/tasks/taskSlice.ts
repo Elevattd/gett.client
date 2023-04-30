@@ -1,9 +1,28 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createTask, updateTask, deleteTask } from './taskReducer';
-import { ITaskSliceState } from '../../../app/constants/interfaces';
+import { ITaskSliceState } from '../../../app/constants/interfaces.interfaces';
 
 const initialState: ITaskSliceState = {
 	value: [
+		{ userId: 1, id: 1, title: 'delectus aut autem', completed: false },
+		{
+			userId: 2,
+			id: 40,
+			title: 'totam atque quo nesciunt',
+			completed: true,
+		},
+		{
+			userId: 3,
+			id: 41,
+			title: 'aliquid amet impedit consequatur aspernatur placeat eaque fugiat suscipit',
+			completed: false,
+		},
+		{
+			userId: 3,
+			id: 42,
+			title: 'rerum perferendis error quia ut eveniet',
+			completed: false,
+		},
 		{ userId: 1, id: 1, title: 'delectus aut autem', completed: false },
 		{
 			userId: 2,

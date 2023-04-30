@@ -1,5 +1,5 @@
 import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
-import { IAuthSliceState } from '../../../app/constants/interfaces';
+import { IAuthSliceState } from '../../../app/constants/interfaces.interfaces';
 import { Action } from '../../../app/constants/types';
 
 export const setCredentias: CaseReducer<IAuthSliceState, PayloadAction<{}>> = (

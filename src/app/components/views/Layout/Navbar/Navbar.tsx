@@ -1,8 +1,8 @@
 import { AppBar, Box, Button, Container, Grid, Stack, Toolbar, Typography } from '@mui/material';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch } from '../../../constants/types';
-import { logout } from '../../../../redux/features/auth/authSlice';
+import { AppDispatch } from '../../../../constants/types';
+import { logout } from '../../../../../redux/features/auth/authSlice';
 
 export const NavBar: React.FC<{}> = () => {
 	const dispatch: AppDispatch = useDispatch();

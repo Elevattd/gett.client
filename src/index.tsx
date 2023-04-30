@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { store } from './redux/store/store';
 import { Provider } from 'react-redux';
 import { createRoot } from 'react-dom/client';
+import { ThemeConfig } from './config/theme.config';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -12,7 +13,9 @@ const root = createRoot(container);
 root.render(
 	// <React.StrictMode>
 	<Provider store={store}>
-		<App />
+		<ThemeConfig>
+			<App />
+		</ThemeConfig>
 	</Provider>,
 	// </React.StrictMode>,
 );

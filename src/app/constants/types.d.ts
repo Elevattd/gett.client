@@ -10,3 +10,10 @@ export type LoginType = {
 	username: string;
 	password: string;
 };
+
+export type CardTask = {
+	userId: number;
+	id: number;
+	title: string;
+	completed: boolean;
+};
