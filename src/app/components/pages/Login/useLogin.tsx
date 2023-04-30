@@ -20,10 +20,9 @@ const useLogin = () => {
 			console.log(loginData);
 			const user = validateCredentials(loginData);
 			if (!user) {
-				return 'NO SE ENCONTRO AL USUARIO';
+				return 'User not match';
 			} else {
 				dispatch(login(user));
-				NotificationManager.success('', '', 3000);
 			}
 		} catch (error) {
 			return error;

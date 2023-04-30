@@ -13,7 +13,7 @@ const useCard: any = () => {
 		dispatch(delTask(id));
 	};
 
-	const updateTask = (id: number) => {
+	const updateTask = (id: any) => {
 		NotificationManager(`Task with: ${id}, update successfully.`, 'success');
 		dispatch(putTask(id));
 	};

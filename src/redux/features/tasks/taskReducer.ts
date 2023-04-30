@@ -7,13 +7,34 @@ export const createTask: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (stat
 	const task: ITask = action?.payload;
 	state.value.push(task);
 };
-export const updateTask: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (state: ITaskSliceState, action: Action) => {
-	const { id, title, completed }: ITask = action?.payload;
-	const taskFound: ITask | undefined = state.value?.find((task: ITask) => task.id === id);
-	if (taskFound) {
-		taskFound.title = title;
-		taskFound.completed = completed;
+
+export const updateTask: CaseReducer<ITaskSliceState, PayloadAction<ITask>> = (state, action) => {
+	const updatedTask = action.payload;
+
+	const taskIndex = findTaskIndex(state.value, updatedTask.id);
+	if (taskIndex !== -1) {
+		const newState = replaceTaskAtIndex(state, updatedTask, taskIndex);
+		return newState;
 	}
+
+	return state;
+};
+
+const findTaskIndex = (tasks: ITask[], id: number): number => {
+	return tasks.findIndex((task) => task.id === id);
+};
+
+const replaceTaskAtIndex = (state: ITaskSliceState, task: ITask, index: number): ITaskSliceState => {
+	const newState = {
+		...state,
+		value: [...state.value],
+		visibleTasks: [...state.visibleTasks],
+	};
+	newState.value[index] = task;
+	const visibleTaskIndex = findTaskIndex(state.visibleTasks, task.id);
+	newState.visibleTasks[visibleTaskIndex] = task;
+
+	return newState;
 };
 
 export const deleteTask: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (state: ITaskSliceState, action: Action) => {

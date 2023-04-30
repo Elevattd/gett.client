@@ -4,7 +4,8 @@ import { ITask } from '../../../constants/interfaces.interfaces';
 import { useTaskList } from './useTaskList';
 import { useSelector } from 'react-redux';
 import { CardComponent } from '../../views/Card/Card';
-import { Box, CircularProgress, Container, Grid } from '@mui/material';
+import { Box, Button, CircularProgress, Container, Grid } from '@mui/material';
+import TaskForm from '../TaskForm/TaskForm';
 
 export const TaskList: React.FC<{}> = () => {
 	const {
@@ -12,9 +13,21 @@ export const TaskList: React.FC<{}> = () => {
 	} = useSelector((state: any) => state);
 
 	const [loading] = useTaskList();
+	const [open, setOpen] = React.useState(false);
 
 	return (
 		<Container maxWidth='xl'>
+			<>
+				<Button
+					fullWidth
+					type='submit'
+					variant='contained'
+					sx={{ mt: 1.5, mb: 3 }}
+					onClick={() => setOpen(true)}
+				>
+					Create Task
+				</Button>
+			</>
 			{loading ? (
 				<Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
 					<CircularProgress />
@@ -47,6 +60,7 @@ export const TaskList: React.FC<{}> = () => {
 					</Box>
 				</>
 			)}
+			{open && <TaskForm open={open} handleClose={() => setOpen(false)} />}
 		</Container>
 	);
 };

@@ -4,21 +4,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../constants/types';
 import { ITask } from '../../../constants/interfaces.interfaces';
 
-const useTaskForm = () => {
-	const {
-		auth: { userId },
-	}: RootState = useSelector((state: RootState) => state);
-
+const useTaskFormUpdate = ({ task }: any) => {
+	console.log('🚀 👍 ~ useTaskFormUpdate ~ task:', task);
 	const dispatch: AppDispatch = useDispatch();
 
-	const INITIAL_STATE = {
-		userId: userId ?? '',
-		id: 39,
-		title: '',
-		completed: false,
-	};
-
-	const [task, setTask] = useState(INITIAL_STATE);
+	const [taskState, setTaskState] = useState(task);
 
 	const handleChange = (e: any) => {
 		const {
@@ -26,14 +16,14 @@ const useTaskForm = () => {
 		} = e;
 		e.preventDefault();
 
-		setTask({ ...task, [name]: value });
+		setTaskState({ ...taskState, [name]: value });
 	};
 
 	const createTask = (e: React.FormEvent<HTMLInputElement>) => {
 		e.preventDefault();
 		dispatch(postTask(task));
 	};
-	return [createTask, handleChange, setTask];
+	return [createTask, handleChange, setTaskState, taskState];
 };
 
-export default useTaskForm;
+export default useTaskFormUpdate;

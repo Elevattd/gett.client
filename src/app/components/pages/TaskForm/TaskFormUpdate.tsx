@@ -1,15 +1,21 @@
 import { Box, Button, Container, Grid, Modal, Paper, TextField, Typography } from '@mui/material';
-import useTaskForm from './useTaskForm';
-import React from 'react';
+import React, { useEffect } from 'react';
+import useTaskFormUpdate from './useTaskFormUpdate';
 
-const TaskForm = ({ open, handleClose }: any) => {
-	const [createTask, handleChange] = useTaskForm();
+const TaskFormUpdate = ({ open, handleClose, task, updateTask }: any) => {
+	console.log('🚀 👍 ~ TaskFormUpdate ~ task:', task);
+	const [createTask, handleChange, setTaskState, taskState] = useTaskFormUpdate(task);
 
 	const handleSubmitAndCloseMododal = (e: any) => {
 		e.preventDefault();
-		createTask(e);
+		updateTask(taskState);
 		handleClose();
 	};
+	useEffect(() => {
+		if (open) {
+			setTaskState(task);
+		}
+	}, [open]);
 
 	return (
 		<Modal
@@ -42,6 +48,7 @@ const TaskForm = ({ open, handleClose }: any) => {
 									label='Description'
 									sx={{ mt: 2, mb: 1.5 }}
 									required
+									value={taskState?.title}
 									//@ts-ignore
 									onChange={(e) => handleChange(e)}
 								/>
@@ -57,4 +64,4 @@ const TaskForm = ({ open, handleClose }: any) => {
 	);
 };
 
-export default TaskForm;
+export default TaskFormUpdate;
