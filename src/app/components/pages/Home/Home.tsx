@@ -6,7 +6,6 @@ import { Container } from '@mui/material';
 const Home: React.FC<{}> = () => {
 	return (
 		<Container maxWidth='xl' sx={{ mt: 15 }}>
-			{/* <TaskForm /> */}
 			<TaskList />
 		</Container>
 	);

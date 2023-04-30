@@ -1,15 +1,8 @@
-import { Box, Button, Container, Grid, Modal, Paper, TextField, Typography } from '@mui/material';
 import useTaskForm from './useTaskForm';
-import React from 'react';
+import { Box, Button, Container, Grid, Modal, Paper, TextField, Typography } from '@mui/material';
 
 const TaskForm = ({ open, handleClose }: any) => {
 	const [createTask, handleChange] = useTaskForm();
-
-	const handleSubmitAndCloseMododal = (e: any) => {
-		e.preventDefault();
-		createTask(e);
-		handleClose();
-	};
 
 	return (
 		<Modal
@@ -33,7 +26,7 @@ const TaskForm = ({ open, handleClose }: any) => {
 							<Typography variant='h4' sx={{ mt: 1, mb: 1 }}>
 								{'New Task'}
 							</Typography>
-							<Box component='form' onSubmit={handleSubmitAndCloseMododal}>
+							<Box component='form' onSubmit={(e) => createTask(e, handleClose)}>
 								<TextField
 									name='title'
 									type='text'

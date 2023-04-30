@@ -1,10 +1,13 @@
-import { Box, Button, Container, Grid, Modal, Paper, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, MenuItem, Modal, Paper, Select, TextField, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 import useTaskFormUpdate from './useTaskFormUpdate';
+import { valuesComplete } from '../../../constants/utils';
 
 const TaskFormUpdate = ({ open, handleClose, task, updateTask }: any) => {
 	console.log('🚀 👍 ~ TaskFormUpdate ~ task:', task);
 	const [createTask, handleChange, setTaskState, taskState] = useTaskFormUpdate(task);
+
+	const values = [true, false];
 
 	const handleSubmitAndCloseMododal = (e: any) => {
 		e.preventDefault();
@@ -37,7 +40,7 @@ const TaskFormUpdate = ({ open, handleClose, task, updateTask }: any) => {
 					<Grid item>
 						<Paper sx={{ padding: '1.2em', borderRadius: '0.5em' }}>
 							<Typography variant='h4' sx={{ mt: 1, mb: 1 }}>
-								{'New Task'}
+								{'Update Task'}
 							</Typography>
 							<Box component='form' onSubmit={handleSubmitAndCloseMododal}>
 								<TextField
@@ -52,8 +55,25 @@ const TaskFormUpdate = ({ open, handleClose, task, updateTask }: any) => {
 									//@ts-ignore
 									onChange={(e) => handleChange(e)}
 								/>
+								{/* <Select
+									value={taskState}
+									onChange={(e) => handleChange(e)}
+									fullWidth
+									label='Complete'
+									sx={{ mt: 3 }}
+								>
+									{valuesComplete.length ? (
+										valuesComplete?.map((value: boolean, i: any) => (
+											<MenuItem id={i} value={value}>
+												{value === 1 ? 'Complete' : 'Incomplete'}
+											</MenuItem>
+										))
+									) : (
+										<MenuItem value={1}>1</MenuItem>
+									)}
+								</Select> */}
 								<Button fullWidth type='submit' variant='contained' sx={{ mt: 1.5, mb: 3 }}>
-									{'Create Task'}
+									{'Update Task'}
 								</Button>
 							</Box>
 						</Paper>

@@ -7,3 +7,5 @@ export const YELLOW = '#E7B331';
 export const GRADIENT_LIGHTBLUE = 'linear-gradient(180deg, rgba(0,161,223,1) 49%, rgba(49,202,255,1) 100%)';
 
 export const values = [5, 10, 15, 20];
+
+export const valuesComplete = [true, false];

@@ -1,4 +1,4 @@
-import React, { ChangeEventHandler, useEffect, useState } from 'react';
+import React, { ChangeEventHandler, FormEvent, useEffect, useState } from 'react';
 import { postTask } from '../../../../redux/features/tasks/taskSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../constants/types';
@@ -29,10 +29,16 @@ const useTaskForm = () => {
 		setTask({ ...task, [name]: value });
 	};
 
-	const createTask = (e: React.FormEvent<HTMLInputElement>) => {
+	const createTask = (e: any, cb: any) => {
 		e.preventDefault();
 		dispatch(postTask(task));
+		cb();
 	};
+
+	// const handleSubmitAndCloseMododal = (cb: any) => {
+	// 	createTask(e);
+
+	// };
 	return [createTask, handleChange, setTask];
 };
 
