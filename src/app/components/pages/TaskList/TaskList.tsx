@@ -45,7 +45,7 @@ export const TaskList: React.FC<{}> = () => {
 						)}
 					</>
 					<Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>
-						<Paginator count={tasks.length} perPage={perPage} />
+						<Paginator />
 					</Box>
 				</>
 			)}

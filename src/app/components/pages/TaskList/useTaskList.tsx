@@ -1,8 +1,8 @@
+import React from 'react';
 import { delTask } from '../../../../redux/features/tasks/taskSlice';
+import { fetchTasks } from '../../../../redux/features/tasks/taskReducer';
 import { useDispatch } from 'react-redux';
 import { AppDispatch } from '../../../constants/types';
-import React from 'react';
-import { fetchTasks } from '../../../../redux/features/tasks/taskReducer';
 
 export const useTaskList = () => {
 	const dispatch: AppDispatch = useDispatch();

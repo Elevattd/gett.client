@@ -1,18 +1,30 @@
 import React from 'react';
-import { Pagination } from '@mui/material';
-import { IPaginator } from '../../../constants/interfaces.interfaces';
+import usePaginator from './usePaginator';
+import { values } from '../../../constants/utils';
+import { MenuItem, Pagination, Select } from '@mui/material';
 
-const Paginator: React.FC<IPaginator> = ({ count, perPage }: IPaginator) => {
-	console.log('🚀 👍 ~ count:', count);
-	const [page, setPage] = React.useState(1);
-
-	const handlePaginationChange = (event: React.ChangeEvent<unknown>, value: number) => {
-		setPage(value);
-	};
-
+const Paginator: React.FC<{}> = () => {
+	const { page, perPage, handlePaginationChange, handlePerPageChange, maxPage } = usePaginator();
 	return (
 		<>
-			<Pagination count={count / perPage} page={page} onChange={handlePaginationChange} />
+			<Select value={perPage} onChange={handlePerPageChange} autoWidth label=''>
+				{values.length ? (
+					values?.map((value: number, i: any) => (
+						<MenuItem id={i} value={value}>
+							{value}
+						</MenuItem>
+					))
+				) : (
+					<MenuItem value={1}>1</MenuItem>
+				)}
+			</Select>
+			<Pagination
+				variant='outlined'
+				color='primary'
+				count={maxPage ?? 1}
+				page={page}
+				onChange={handlePaginationChange}
+			/>
 		</>
 	);
 };

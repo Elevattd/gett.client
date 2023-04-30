@@ -24,7 +24,12 @@ export interface ITask {
 	completed: boolean;
 }
 
+export interface IPaginator {}
+
 export interface IPaginator {
-	count: number;
+	page: number;
 	perPage: number;
+	handlePaginationChange: any;
+	handlePerPageChange: any;
+	maxPage: number;
 }
