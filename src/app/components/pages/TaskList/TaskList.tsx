@@ -8,12 +8,10 @@ import { Box, CircularProgress, Container, Grid } from '@mui/material';
 
 export const TaskList: React.FC<{}> = () => {
 	const {
-		tasks: { value: tasks },
+		tasks: { visibleTasks },
 	} = useSelector((state: any) => state);
 
 	const [deleteTask, loading] = useTaskList();
-
-	const [perPage, setPerPage] = React.useState(4);
 
 	return (
 		<Container maxWidth='xl'>
@@ -24,9 +22,9 @@ export const TaskList: React.FC<{}> = () => {
 			) : (
 				<>
 					<>
-						{tasks?.length !== 0 ? (
+						{visibleTasks?.length !== 0 ? (
 							<Grid container spacing={2} direction='row'>
-								{tasks?.map((task: ITask) => {
+								{visibleTasks?.map((task: ITask) => {
 									const { userId, id, title, completed } = task;
 									return (
 										<Grid item xs={3}>

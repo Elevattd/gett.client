@@ -1,16 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { ITaskSliceState } from '../../../app/constants/interfaces.interfaces';
-import { createTask, updateTask, deleteTask, fetchTasks } from './taskReducer';
+import { createTask, updateTask, deleteTask, fetchTasks, getTaskAction } from './taskReducer';
 
 const initialState: ITaskSliceState = {
 	value: [],
+	visibleTasks: [],
 	status: '',
 };
 
 export const tasksSlice = createSlice({
 	name: 'tasks',
 	initialState,
-	reducers: { postTask: createTask, putTask: updateTask, delTask: deleteTask },
+	reducers: { postTask: createTask, putTask: updateTask, delTask: deleteTask, getTasks: getTaskAction },
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchTasks.fulfilled, (state, action) => {
@@ -24,5 +25,5 @@ export const tasksSlice = createSlice({
 	},
 });
 
-export const { postTask, putTask, delTask } = tasksSlice.actions;
+export const { postTask, putTask, delTask, getTasks } = tasksSlice.actions;
 export const taskReducer = tasksSlice.reducer;

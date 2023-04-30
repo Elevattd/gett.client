@@ -22,6 +22,12 @@ export const deleteTask: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (stat
 		state.value.splice(state.value.indexOf(taskFound), 1);
 	}
 };
+export const getTaskAction: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (
+	state: ITaskSliceState,
+	action: Action,
+) => {
+	state.visibleTasks = action.payload;
+};
 export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async () => {
 	try {
 		const { data } = await AxiosInstance.get('todos');

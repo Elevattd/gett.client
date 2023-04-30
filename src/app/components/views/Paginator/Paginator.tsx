@@ -4,7 +4,7 @@ import { values } from '../../../constants/utils';
 import { MenuItem, Pagination, Select } from '@mui/material';
 
 const Paginator: React.FC<{}> = () => {
-	const { page, perPage, handlePaginationChange, handlePerPageChange, maxPage } = usePaginator();
+	const { tasks, currentPage, perPage, handlePaginationChange, handlePerPageChange } = usePaginator();
 	return (
 		<>
 			<Select value={perPage} onChange={handlePerPageChange} autoWidth label=''>
@@ -21,8 +21,8 @@ const Paginator: React.FC<{}> = () => {
 			<Pagination
 				variant='outlined'
 				color='primary'
-				count={maxPage ?? 1}
-				page={page}
+				count={Math.ceil(tasks.length / perPage)}
+				page={currentPage}
 				onChange={handlePaginationChange}
 			/>
 		</>

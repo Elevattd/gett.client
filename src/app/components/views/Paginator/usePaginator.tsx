@@ -1,29 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { IPaginator } from '../../../constants/interfaces.interfaces';
-import { useSelector } from 'react-redux';
-import { SelectChangeEvent } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch, RootState } from '../../../constants/types';
+import { setCurrentPage, setPerPage } from '../../../../redux/features/pagination/paginationSlice';
+import { getTasks } from '../../../../redux/features/tasks/taskSlice';
 
-const usePaginator: () => IPaginator = (): IPaginator => {
+const usePaginator: any = (): any => {
+	const dispatch: AppDispatch = useDispatch();
+
 	const {
 		tasks: { value: tasks },
-	} = useSelector((state: any) => state);
+		pagination: { currentPage, perPage },
+	} = useSelector((state: RootState) => state);
 
-	const [page, setPage] = React.useState(1);
-	const [perPage, setPerPage] = React.useState(5);
-	const totalPages = Math.ceil(tasks.length / perPage);
-	const maxPage = totalPages > 0 ? totalPages : 1;
+	const startIndex = (currentPage - 1) * perPage;
+	const endIndex = startIndex + perPage;
+	const visibleTasks = tasks.slice(startIndex, endIndex);
 
 	const handlePaginationChange = (event: React.ChangeEvent<unknown>, value: number) => {
-		setPage(value);
+		dispatch(setCurrentPage(value));
 	};
 
-	const handlePerPageChange = (event: SelectChangeEvent<number>) => {
-		event.preventDefault();
-		setPerPage(event.target.value as number);
-		setPage(1);
+	const handlePerPageChange = (event: React.ChangeEvent<{ value: unknown }>) => {
+		dispatch(setPerPage(Number(event.target.value)));
+		dispatch(getTasks(visibleTasks));
 	};
 
-	return { page, perPage, handlePaginationChange, handlePerPageChange, maxPage };
+	useEffect(() => {
+		dispatch(getTasks(visibleTasks));
+	}, [currentPage, perPage]);
+
+	return { tasks, currentPage, perPage, visibleTasks, handlePaginationChange, handlePerPageChange };
 };
 
 export default usePaginator;

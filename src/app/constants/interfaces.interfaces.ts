@@ -7,6 +7,7 @@ export interface IUser {
 
 export interface ITaskSliceState {
 	value: ITask[];
+	visibleTasks: ITask[];
 	status: any;
 }
 
@@ -32,4 +33,9 @@ export interface IPaginator {
 	handlePaginationChange: any;
 	handlePerPageChange: any;
 	maxPage: number;
+}
+
+export interface IPaginationState {
+	currentPage: number;
+	perPage: number;
 }
