@@ -23,9 +23,7 @@ export const NavBar: React.FC<{}> = () => {
 							<Grid item>
 								<Stack direction='row' spacing={1}>
 									{!autenticate ? (
-										<>
-											<Button variant='contained'>Register</Button>
-										</>
+										<>{/* <Button variant='contained'>Register</Button> */}</>
 									) : (
 										<>
 											<Button variant='contained' onClick={logoutUser}>

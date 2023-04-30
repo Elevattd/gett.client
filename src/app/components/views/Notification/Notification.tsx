@@ -1,13 +1,6 @@
 import { Alert, AlertColor, Snackbar, Typography } from '@mui/material';
 import React from 'react';
-type NotificationProps = {
-	open: boolean;
-	msg: string;
-	severity: AlertColor | undefined;
-	handleClose: () => void;
-	center?: boolean;
-	top?: boolean;
-};
+import { NotificationProps } from '../../../constants/types';
 
 const Notification: React.FC<NotificationProps> = ({ open, msg, severity, handleClose, center, top }) => {
 	return (

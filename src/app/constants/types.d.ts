@@ -17,3 +17,12 @@ export type CardTask = {
 	title: string;
 	completed: boolean;
 };
+
+export type NotificationProps = {
+	open: boolean;
+	msg: string;
+	severity: AlertColor | undefined;
+	handleClose: () => void;
+	center?: boolean;
+	top?: boolean;
+};
