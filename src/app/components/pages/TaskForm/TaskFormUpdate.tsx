@@ -1,11 +1,9 @@
-import { Box, Button, Container, Grid, MenuItem, Modal, Paper, Select, TextField, Typography } from '@mui/material';
-import React, { useEffect } from 'react';
+import { Box, Button, Container, Grid, Modal, Paper, TextField, Typography } from '@mui/material';
+import React from 'react';
 import useTaskFormUpdate from './useTaskFormUpdate';
-import { valuesComplete } from '../../../constants/utils';
 
 const TaskFormUpdate = ({ open, handleClose, task, updateTask }: any) => {
-	console.log('🚀 👍 ~ TaskFormUpdate ~ task:', task);
-	const [createTask, handleChange, setTaskState, taskState] = useTaskFormUpdate(task);
+	const [handleChange, setTaskState, taskState] = useTaskFormUpdate(task);
 
 	const values = [true, false];
 
@@ -14,7 +12,7 @@ const TaskFormUpdate = ({ open, handleClose, task, updateTask }: any) => {
 		updateTask(taskState);
 		handleClose();
 	};
-	useEffect(() => {
+	React.useEffect(() => {
 		if (open) {
 			setTaskState(task);
 		}
@@ -52,7 +50,6 @@ const TaskFormUpdate = ({ open, handleClose, task, updateTask }: any) => {
 									sx={{ mt: 2, mb: 1.5 }}
 									required
 									value={taskState?.title}
-									//@ts-ignore
 									onChange={(e) => handleChange(e)}
 								/>
 								{/* <Select

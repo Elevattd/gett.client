@@ -17,7 +17,6 @@ const useLogin = () => {
 	const handleLoginSubmit = (e: React.FormEvent<HTMLInputElement>) => {
 		try {
 			e.preventDefault();
-			console.log(loginData);
 			const user = validateCredentials(loginData);
 			if (!user) {
 				return 'User not match';
