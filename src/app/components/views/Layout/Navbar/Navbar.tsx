@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import useNavbar from './useNavbar';
+import { useNotification } from '../../../../../config/context/Notification.context';
 
 export const NavBar: React.FC<{}> = () => {
 	const [logoutUser] = useNavbar();

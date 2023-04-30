@@ -1,18 +1,17 @@
-import React from 'react';
-import { delTask, getTasks } from '../../../../redux/features/tasks/taskSlice';
-import { useDispatch } from 'react-redux';
-
+import { delTask } from '../../../../redux/features/tasks/taskSlice';
 import { AppDispatch } from '../../../constants/types';
-import usePaginator from '../Paginator/usePaginator';
+import { useDispatch } from 'react-redux';
+import { useNotification } from '../../../../config/context/Notification.context';
 
 const useCard: any = () => {
 	const dispatch: AppDispatch = useDispatch();
-	const { visibleTasks } = usePaginator();
+	const { NotificationManager } = useNotification();
 
 	const deleteTask = (id: number) => {
+		NotificationManager(`Task with: ${id}, deleted successfully.`, 'info');
 		dispatch(delTask(id));
-		// dispatch(getTasks(visibleTasks));
 	};
+
 	return [deleteTask];
 };
 

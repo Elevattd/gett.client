@@ -7,7 +7,7 @@ const Paginator: React.FC<{}> = () => {
 	const { tasks, currentPage, perPage, handlePaginationChange, handlePerPageChange } = usePaginator();
 	return (
 		<>
-			<Select value={perPage} onChange={handlePerPageChange} autoWidth label=''>
+			<Select value={perPage} onChange={handlePerPageChange} autoWidth label='' sx={{ mt: 3 }}>
 				{values.length ? (
 					values?.map((value: number, i: any) => (
 						<MenuItem id={i} value={value}>
@@ -24,6 +24,7 @@ const Paginator: React.FC<{}> = () => {
 				count={Math.ceil(tasks.length / perPage)}
 				page={currentPage}
 				onChange={handlePaginationChange}
+				sx={{ mt: 4, ml: 2 }}
 			/>
 		</>
 	);

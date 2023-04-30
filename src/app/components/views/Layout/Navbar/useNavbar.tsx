@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 const useNavbar = () => {
 	const dispatch: AppDispatch = useDispatch();
+
 	const logoutUser = () => {
 		dispatch(logout({}));
 	};
