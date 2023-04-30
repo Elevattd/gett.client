@@ -11,7 +11,7 @@ export const TaskList: React.FC<{}> = () => {
 		tasks: { visibleTasks },
 	} = useSelector((state: any) => state);
 
-	const [deleteTask, loading] = useTaskList();
+	const [loading] = useTaskList();
 
 	return (
 		<Container maxWidth='xl'>

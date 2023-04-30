@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { ITaskSliceState } from '../../../app/constants/interfaces.interfaces';
 import { createTask, updateTask, deleteTask, fetchTasks, getTaskAction } from './taskReducer';
 
-const initialState: ITaskSliceState = {
+export const initialState: ITaskSliceState = {
 	value: [],
 	visibleTasks: [],
 	status: '',

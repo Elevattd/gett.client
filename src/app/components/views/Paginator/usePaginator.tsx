@@ -1,9 +1,8 @@
 import React, { useEffect } from 'react';
-import { IPaginator } from '../../../constants/interfaces.interfaces';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, RootState } from '../../../constants/types';
-import { setCurrentPage, setPerPage } from '../../../../redux/features/pagination/paginationSlice';
 import { getTasks } from '../../../../redux/features/tasks/taskSlice';
+import { AppDispatch, RootState } from '../../../constants/types';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCurrentPage, setPerPage } from '../../../../redux/features/pagination/paginationSlice';
 
 const usePaginator: any = (): any => {
 	const dispatch: AppDispatch = useDispatch();

@@ -2,8 +2,10 @@ import { Button, Card, CardActions, CardContent, Divider, Typography } from '@mu
 import React from 'react';
 import { CardTask } from '../../../constants/types';
 import { ITask } from '../../../constants/interfaces.interfaces';
+import useCard from './useCard';
 
 export const CardComponent: React.FC<CardTask> = ({ userId, id, title, completed }: ITask) => {
+	const [deleteTask] = useCard();
 	return (
 		<Card sx={{ minHeight: 200 }}>
 			<CardContent>
@@ -15,8 +17,8 @@ export const CardComponent: React.FC<CardTask> = ({ userId, id, title, completed
 				<Typography sx={{ mt: 1.5 }}>{completed ? 'OK' : 'NO'}</Typography>
 			</CardContent>
 			<CardActions>
-				<Button fullWidth variant='contained' size='small'>
-					Learn More
+				<Button fullWidth variant='contained' size='small' onClick={() => deleteTask(id)}>
+					Delete Task
 				</Button>
 			</CardActions>
 		</Card>

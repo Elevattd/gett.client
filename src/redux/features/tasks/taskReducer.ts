@@ -17,11 +17,16 @@ export const updateTask: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (stat
 };
 
 export const deleteTask: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (state: ITaskSliceState, action: Action) => {
-	const taskFound: ITask | undefined = state.value?.find((task: ITask) => task.id === action.payload);
-	if (taskFound) {
-		state.value.splice(state.value.indexOf(taskFound), 1);
+	const taskIndex: number = state.value.findIndex((task: ITask) => task.id === action.payload);
+	if (taskIndex !== -1) {
+		state.value.splice(taskIndex, 1);
+		state.visibleTasks.splice(taskIndex, 1);
+		if (state.value.length > state.visibleTasks.length) {
+			state.visibleTasks.push(state.value[state.visibleTasks.length]);
+		}
 	}
 };
+
 export const getTaskAction: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (
 	state: ITaskSliceState,
 	action: Action,
