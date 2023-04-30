@@ -1,6 +1,7 @@
 import { Action } from '../../../app/constants/types';
-import { CaseReducer, PayloadAction } from '@reduxjs/toolkit';
+import { AxiosInstance } from '../../../app/services/axiosInstance';
 import { ITask, ITaskSliceState } from '../../../app/constants/interfaces.interfaces';
+import { CaseReducer, PayloadAction, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const createTask: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (state: ITaskSliceState, action: Action) => {
 	const task: ITask = action?.payload;
@@ -21,3 +22,11 @@ export const deleteTask: CaseReducer<ITaskSliceState, PayloadAction<{}>> = (stat
 		state.value.splice(state.value.indexOf(taskFound), 1);
 	}
 };
+export const fetchTasks = createAsyncThunk('tasks/fetchTasks', async () => {
+	try {
+		const { data } = await AxiosInstance.get('todos');
+		return data;
+	} catch (error) {
+		return error;
+	}
+});

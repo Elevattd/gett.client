@@ -23,3 +23,8 @@ export interface ITask {
 	title: string;
 	completed: boolean;
 }
+
+export interface IPaginator {
+	count: number;
+	perPage: number;
+}
